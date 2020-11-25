@@ -1,0 +1,10 @@
+#Fri Oct 30 15:38:01 EDT 2020
+license.owner=Cleo
+license.extensionb6=[nw|-mhAZ-5HLi-ZFJ]-Yk3&-\#k{9-aAMw-m$4z
+license.extensionb5=ebw|-5{2R-ryLi-ZVJR-s^0&-Hk31-as\#u-&RZU
+license.extensionb4=evw|-5I2R-ryLi-ZVJR-s^0C-Hk31-as\#u-&RZU
+license.extensionb3=eiw|-5$%R-ryLi-ZVJR-s^0Z-Hk31-as\#u-&RZU
+license.extensionb2=enwA-5h2R-rZUi-ZVJR-s^0Z-Hk31-as\#u-&RZU
+license.hash=148JURS|64ehfs1
+license.extensionb1=ebwA-5{rR-zZUi-ZVJR-s^0Z-Hk31-as\#u-&RZU
+license.key=^vFA-uI&i-LZUi-ZGZN-M{X}-&kXz-\!s7c-\!DLx

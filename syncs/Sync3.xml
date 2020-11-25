@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Sync by="harmony(Command line)" enc="1f7daba8-3ac5-4a8a-b7f4-70d189ed94b8" modevent="Modified" modified="2020/11/02 16:15:43" moditem="Synchronization" modtype="System options" serial="harmony3:UH0003(Harmony)">
+  <Versalex alias="" backup="False" group="" id="bRUmbKL1iBw=&#10;" location="" vlnalias="False"/>
+  <Versalex address="harmony1" backup="False" id="lRWZxBFK3qsIZzJS0N91SA==&#10;" port="5080" secure="False" syncpath="certs/*;data/*;conf/Options.xml;conf/Proxies.xml;conf/AS400.xml;conf/WinUnixFolders.xml;conf/Schedule.xml;hosts/Local Listener.xml;hosts/*.xml;conf/TradingPartners.xml;conf/ipbl.xml;importedIDPs/*.xml" vlnalias="False"/>
+  <Versalex address="harmony2" alias="" backup="False" group="" id="vezXGoA9GKz5cB2/132bjQ==&#10;" location="" port="5080" secure="False" syncpath="certs/*;data/*;conf/Options.xml;conf/Proxies.xml;conf/AS400.xml;conf/WinUnixFolders.xml;conf/Schedule.xml;hosts/Local Listener.xml;hosts/*.xml;conf/TradingPartners.xml;conf/ipbl.xml;importedIDPs/*.xml" vlnalias="False"/>
+  <Versalex address="harmony4" alias="" backup="False" group="" id="mPRsqWvGBLhXuBQFU9kROw==&#10;" location="" port="5080" product="Harmony" secure="False" syncpath="certs/*;data/*;conf/Options.xml;conf/Proxies.xml;conf/AS400.xml;conf/WinUnixFolders.xml;conf/Schedule.xml;hosts/Local Listener.xml;hosts/*.xml;conf/TradingPartners.xml;conf/ipbl.xml;importedIDPs/*.xml" vlnalias="False"/>
+</Sync>

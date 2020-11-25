@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Host alias="Local Listener" application="" by="harmony" class="*ER4aPQsMEDcTHhwQMwcaM1FBFAsHGU8STlMaThxKSxZOQw**" created="2020/11/03 13:41:42" enabled="True" enc="f353f6f0-a751-4ac0-a088-a97ef5ce5669" local="True" localencrcertalias="" localencrcertpassword="" localsigncertalias="" localsigncertpassword="" modevent="Created" modified="2020/11/03 13:41:42" moditem="Local Listener" modtype="Local Listener" preconfigured="2011/01/18 16:28:17" ready="True" serial="a65fdcff1859:UH0001(Harmony)" standaloneaction="False" test="False" transport="HTTP, FTP, SMTP and fasp Services" type="" uid="F-nL9O6kQDqABbHI8-sneA" version="1">
+  <Acceptallcacertificates>True</Acceptallcacertificates>
+  <Acceptallusercertificates>True</Acceptallusercertificates>
+  <Acceptlocalhttpusermailboxcertificates>False</Acceptlocalhttpusermailboxcertificates>
+  <Allowexpiredcerts>True</Allowexpiredcerts>
+  <Autostartup>False</Autostartup>
+  <Clientauthoptional>False</Clientauthoptional>
+  <Connecttype>0</Connecttype>
+  <Ftpisselected>False</Ftpisselected>
+  <Ftppassivemodeisselected>True</Ftppassivemodeisselected>
+  <Ftppasvhighport>20999</Ftppasvhighport>
+  <Ftppasvlowport>20900</Ftppasvlowport>
+  <Ftpsacceptallcacertificates>True</Ftpsacceptallcacertificates>
+  <Ftpsacceptallusercertificates>True</Ftpsacceptallusercertificates>
+  <Ftpsauthisselected>False</Ftpsauthisselected>
+  <Ftpsexplicitauthrequiredisselected>True</Ftpsexplicitauthrequiredisselected>
+  <Ftpsimplisselected>False</Ftpsimplisselected>
+  <Ftpsreadonly>False</Ftpsreadonly>
+  <Ftpusewelcomemessageforsystresponse>False</Ftpusewelcomemessageforsystresponse>
+  <Httpisselected>True</Httpisselected>
+  <Httpport>5080</Httpport>
+  <Httpsisselected>False</Httpsisselected>
+  <Httpsreadonly>False</Httpsreadonly>
+  <Index>0</Index>
+  <Indexdate>-1</Indexdate>
+  <Internal>0</Internal>
+  <Isdnoftpisselected>False</Isdnoftpisselected>
+  <Lastcemresponsecheckdate>1604410902904</Lastcemresponsecheckdate>
+  <Lastcertexpirationcheckdate>1604410902761</Lastcertexpirationcheckdate>
+  <Logignoredisdncalls>True</Logignoredisdncalls>
+  <Oftpsacceptallcacertificates>True</Oftpsacceptallcacertificates>
+  <Oftpsacceptallusercertificates>True</Oftpsacceptallusercertificates>
+  <Oftpsreadonly>False</Oftpsreadonly>
+  <Origin>Local Listener</Origin>
+  <Port>0</Port>
+  <Requireclientauthisselected>False</Requireclientauthisselected>
+  <Requireftpclientauthisselected>False</Requireftpclientauthisselected>
+  <Requireoftpclientauthisselected>False</Requireoftpclientauthisselected>
+  <Requiresmtpclientauthisselected>False</Requiresmtpclientauthisselected>
+  <Runninglocalrequired>True</Runninglocalrequired>
+  <Secureportrequired>False</Secureportrequired>
+  <Securetcpipoftpisselected>False</Securetcpipoftpisselected>
+  <Securetcpipoftpport>6619</Securetcpipoftpport>
+  <Smtpisselected>False</Smtpisselected>
+  <Smtpsacceptallcacertificates>True</Smtpsacceptallcacertificates>
+  <Smtpsacceptallusercertificates>True</Smtpsacceptallusercertificates>
+  <Smtpsimplisselected>False</Smtpsimplisselected>
+  <Smtpsreadonly>False</Smtpsreadonly>
+  <Smtpsstarttlsisselected>False</Smtpsstarttlsisselected>
+  <Smtpsstarttlsrequired>False</Smtpsstarttlsrequired>
+  <Sshftpisselected>False</Sshftpisselected>
+  <Sshftpport>22</Sshftpport>
+  <Sshftpreadonly>False</Sshftpreadonly>
+  <Tcpipoftpisselected>False</Tcpipoftpisselected>
+  <Tcpipoftpport>3305</Tcpipoftpport>
+  <Threadcount>0</Threadcount>
+  <Uidswpd>True</Uidswpd>
+  <Usesamecerts>True</Usesamecerts>
+  <Advanced>UnknownPartnerMessageAction=Save Payload</Advanced>
+  <Advanced>SSLCiphers=Default Set</Advanced>
+  <Service alias="AS2" class="*GhwWCQ0aLE0sPlERHhodTQweUQ**" created="2020/11/03 13:41:42" enabled="True" modified="2004/11/23 10:13" ready="False" uid="soPgNp4LQHeOj1FhwQf9Gg" version="1">
+    <Filenamehours>24</Filenamehours>
+    <Generatefilenameresponses>False</Generatefilenameresponses>
+    <Mdnfolder>AS2\mdn</Mdnfolder>
+    <Msgiddays>5</Msgiddays>
+    <Notreadyreason>AS2 My External Address is required.</Notreadyreason>
+    <Resourcepath>/as2</Resourcepath>
+    <Responseaction>0</Responseaction>
+    <Restartfolder>AS2\restart</Restartfolder>
+  </Service>
+  <Service alias="AS3" class="*GhwWCQ0aLEwsPlERHhodTQweUQ**" created="2020/11/03 13:41:42" enabled="True" modified="2004/11/23 10:14" ready="False" uid="qNLtyqAFSWGsU567CTW0-A" version="1">
+    <Mdnfolder>AS3\mdn</Mdnfolder>
+    <Msgiddays>5</Msgiddays>
+    <Notreadyreason>AS2 My External Address is required when 'Use My External Address from AS2 Service' is selected.</Notreadyreason>
+    <Useas2hostname>True</Useas2hostname>
+  </Service>
+  <Service alias="Web Browser" class="*GhwWCQ0aLA0aDAgQDT0dGihR" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 15:23:06" ready="True" uid="3c14oLJdR4SzAW0ZighRLA" version="1">
+    <Agentwaittimeout>120</Agentwaittimeout>
+    <Autorefreshrate>15</Autorefreshrate>
+    <Businessdashboardresourceenabled>False</Businessdashboardresourceenabled>
+    <Businessdashboardresourcepath>/VLDashboards</Businessdashboardresourcepath>
+    <Businessdashboardviaproxy>True</Businessdashboardviaproxy>
+    <Certificatespagesize>40</Certificatespagesize>
+    <Clientdebug>False</Clientdebug>
+    <Headlessmode>True</Headlessmode>
+    <Hostsubfolderspagesize>40</Hostsubfolderspagesize>
+    <Includeapplicationfonts>True</Includeapplicationfonts>
+    <Includejrefonts>True</Includejrefonts>
+    <Mftportalresourceenabled>True</Mftportalresourceenabled>
+    <Mftportalresourcepath>/Portal</Mftportalresourcepath>
+    <Mftportalsaml>False</Mftportalsaml>
+    <Mftportalviaproxy>True</Mftportalviaproxy>
+    <Navigatorresourcepath>/VLNavigator</Navigatorresourcepath>
+    <Needx11displayvariable>True</Needx11displayvariable>
+    <Onlyloadvisiblebranches>True</Onlyloadvisiblebranches>
+    <Portalapplicationname>VLPortal</Portalapplicationname>
+    <Portalinactivitytimeout>600</Portalinactivitytimeout>
+    <Portalresourcepath>/VLPortal</Portalresourcepath>
+    <Reportserverrmiport>1129</Reportserverrmiport>
+    <Requesttimeout>120</Requesttimeout>
+    <Reverseorderinfontpath>False</Reverseorderinfontpath>
+    <Secureportrequiredversalexnavigator>False</Secureportrequiredversalexnavigator>
+    <Servicedebug>False</Servicedebug>
+    <Sessiontimeout>60</Sessiontimeout>
+    <Systemmonitorresourceenabled>False</Systemmonitorresourceenabled>
+    <Systemmonitorresourcepath>/VLMonitor</Systemmonitorresourcepath>
+    <Systemmonitorusebusinessdashboard>False</Systemmonitorusebusinessdashboard>
+    <Systemmonitorviaproxy>True</Systemmonitorviaproxy>
+    <Toplevelpagesize>40</Toplevelpagesize>
+    <Trustresourceenabled>False</Trustresourceenabled>
+    <Trustresourcepath>/Trust</Trustresourcepath>
+    <Trustviaproxy>True</Trustviaproxy>
+    <Unifyresourceenabled>False</Unifyresourceenabled>
+    <Unifyresourcepath>/Unify</Unifyresourcepath>
+    <Unifyviaproxy>True</Unifyviaproxy>
+    <Useapplicationfontproperties>True</Useapplicationfontproperties>
+    <Useplatformfont>False</Useplatformfont>
+    <Useplatformgraphics>False</Useplatformgraphics>
+    <Useportalcustomlink>False</Useportalcustomlink>
+    <Userecaptcha>False</Userecaptcha>
+    <Userecaptchaafterfailedlogins>3</Userecaptchaafterfailedlogins>
+    <Versalexresourceenabled>True</Versalexresourceenabled>
+    <Versalexresourcepath>/Harmony</Versalexresourcepath>
+    <Versalexviaproxy>True</Versalexviaproxy>
+    <Vlnavigatorresourceenabled>True</Vlnavigatorresourceenabled>
+    <Vlnavigatorviaproxy>True</Vlnavigatorviaproxy>
+    <Vlportalresourceenabled>True</Vlportalresourceenabled>
+    <Withinhostspagesize>40</Withinhostspagesize>
+    <X11displayvariablevalue>:0.0</X11displayvariablevalue>
+    <Zipalldownloads>True</Zipalldownloads>
+    <Webpage>&lt;br&gt;
+&lt;h2 webpageID="VersaLex Web Portal" language="en" link="false"&gt;VersaLex Web Portal&lt;/h2&gt;&lt;br&gt;&lt;span&gt;Welcome to the VersaLex web portal.&lt;br&gt;&lt;br&gt;&amp;nbsp; --&amp;nbsp; select "Manual File Transfer" for ad hoc file transfers&lt;br&gt;&amp;nbsp; --&amp;nbsp; select "File Transfer History" to view transfer results within your HTTP user mailbox or an associated primary mailbox&lt;br&gt;&amp;nbsp; --&amp;nbsp; select "VersaLex Web Portal Help" to view general help documentation for the portal&lt;/span&gt;&lt;br&gt;&lt;span&gt;&lt;/span&gt;&lt;br&gt;&lt;span&gt;&lt;/span&gt;&lt;br&gt;&lt;span&gt;Please contact the system administrator with any questions.&lt;/span&gt;</Webpage>
+    <Webpage>&lt;br&gt;
+&lt;h2 webpageID="Manual File Transfer" language="en" link="false"&gt;Manual File Transfer&lt;/h2&gt;</Webpage>
+    <Webpage>&lt;br&gt;
+&lt;h2 webpageID="File Transfer History" language="en" link="false"&gt;File Transfer History&lt;/h2&gt;</Webpage>
+    <Webpage>&lt;table height="100%" width="100%"&gt; &lt;tr&gt; &lt;td&gt; &lt;br&gt;
+&lt;h2 webpageID="VersaLex Web Portal Help" language="en" link="true"&gt;VersaLex Web Portal Help&lt;/h2&gt;&lt;tr height="100%"&gt; &lt;td&gt; &lt;iframe src="html/VLPortal_Help.html" class="reportwindow"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</Webpage>
+    <Webportal class="*Ex4LDRAvHRooWxocFgkNGiwNGgwIEA09HRooUQ**">
+      <Webportalbanner>img/banner.jpg</Webportalbanner>
+      <Webportalid>Default Portal</Webportalid>
+      <Webportallogo>img/defaultlogo.jpg</Webportallogo>
+      <Webportalmenu>img/navpic.jpg</Webportalmenu>
+      <Webportaltitle>Cleo</Webportaltitle>
+      <Webportalpage class="*GhgeLxMeCw0QLx0aKFsTHgsNEC8dGihbGhwWCQ0aLA0aDAgQDT0dGihR" webpageid="VersaLex Web Portal"/>
+      <Webportalpage class="*GhgeLxMeCw0QLx0aKFsTHgsNEC8dGihbGhwWCQ0aLA0aDAgQDT0dGihR" webpageid="Manual File Transfer"/>
+      <Webportalpage class="*GhgeLxMeCw0QLx0aKFsTHgsNEC8dGihbGhwWCQ0aLA0aDAgQDT0dGihR" webpageid="File Transfer History"/>
+      <Webportalpage class="*GhgeLxMeCw0QLx0aKFsTHgsNEC8dGihbGhwWCQ0aLA0aDAgQDT0dGihR" webpageid="VersaLex Web Portal Help"/>
+    </Webportal>
+  </Service>
+  <Service alias="ebXML Message Service" class="*GhwWCQ0aLDMyJz06UREeGh0TEgcdGlE*" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 15:23:52" ready="False" uid="grRUuyXgQ2isFIAEf30VHg" version="1">
+    <Ackfolder>ebXML\ack</Ackfolder>
+    <Conversationidindex>0</Conversationidindex>
+    <Messageidindex>0</Messageidindex>
+    <Msgiddays>5</Msgiddays>
+    <Notreadyreason>ebXML CPA My Party Id is required.</Notreadyreason>
+    <Resourcepath>/ebMS</Resourcepath>
+  </Service>
+  <Service alias="Odette FTP" class="*GhwWCQ0aLC8rOTBRER4aHQ8LGRBR" created="2020/11/03 13:41:42" enabled="True" modified="2005/03/08 10:44" ready="False" uid="kHrhpoZiRpCee-5kJyaNJg" version="1">
+    <Allowdifferentdest>False</Allowdifferentdest>
+    <Allowdifferentorig>False</Allowdifferentorig>
+    <Eerpfolder>OFTP\eerp</Eerpfolder>
+    <Msgiddays>5</Msgiddays>
+    <Notreadyreason>My User ID (SSIDCODE) required.</Notreadyreason>
+    <Restartfolder>OFTP\restart</Restartfolder>
+  </Service>
+  <Service alias="SMTP" class="*GhwWCQ0aLA8LEixRER4aHQ8LEgxR" created="2020/11/03 13:41:42" enabled="True" modified="2005/03/08 10:44" ready="False" uid="JN6uST-eTE2TZoKRDTd-Lw" version="1">
+    <Allowverifycommand>True</Allowverifycommand>
+    <Casesensitiveusernames>True</Casesensitiveusernames>
+    <Dsnfolder>SMTP\dsn</Dsnfolder>
+    <Inmediatypes>*</Inmediatypes>
+    <Msgiddays>5</Msgiddays>
+    <Notreadyreason>My Domain required.</Notreadyreason>
+    <Outmediatypes>*</Outmediatypes>
+    <Reversednslookup>False</Reversednslookup>
+  </Service>
+  <Service alias="RosettaNet" by="" class="*GhwWCQ0aLDEtUREeGh0eCwsaDBANUQ**" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 16:28:17" ready="False" uid="nT5by3xaTjOZPJj-xQJ-5Q" version="1">
+    <Ackfolder>RNIF/ack</Ackfolder>
+    <Messageidretaindays>30</Messageidretaindays>
+    <Notreadyreason>Business identifier must be specified.</Notreadyreason>
+    <Resourcepath>/RNIF</Resourcepath>
+  </Service>
+  <Service alias="Web Service" by="" class="*GhwWCQ0aLB0aKFE*" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 16:28:17" ready="True" uid="Deh8IZUzTEOiemPg6c6fdQ" version="1">
+    <Accesscontrolalloworigin>*</Accesscontrolalloworigin>
+    <Allowwebaccesstologsdirectory>False</Allowwebaccesstologsdirectory>
+    <Generalpurpose>True</Generalpurpose>
+    <Resourcepath>/services</Resourcepath>
+    <Restbasicauthdisabled>False</Restbasicauthdisabled>
+    <Restresourceenabled>True</Restresourceenabled>
+    <Restresourcepath>/api</Restresourcepath>
+    <Soapresourceenabled>False</Soapresourceenabled>
+    <Soapviaproxy>False</Soapviaproxy>
+    <Tradelink>False</Tradelink>
+    <Usearrays>True</Usearrays>
+    <Vlexchangedbdriverstring>oracle.jdbc.driver.OracleDriver</Vlexchangedbdriverstring>
+    <Wsdlonedottwocompliant>False</Wsdlonedottwocompliant>
+  </Service>
+  <Service alias="HTTP" by="" class="*GhwWCQ0aLA8LCzdRDRoJDRoMDwsLF1E*" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 16:28:17" ready="True" uid="eKsYKRfzQa6CQ2noMUv6kA" version="1">
+    <Basicauth>True</Basicauth>
+    <Detectmultipartcontent>False</Detectmultipartcontent>
+    <Digestauth>False</Digestauth>
+    <Realm>Cleo Harmony</Realm>
+    <Resourcepath>/server</Resourcepath>
+  </Service>
+  <Service alias="fasp" by="" class="*GhwWCQ0aLA8MHjlRER4aHQ8MHhlR" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 16:28:17" ready="False" uid="BCrrDXI6QMeY-syl7ShkAA" version="1">
+    <Managementport>40002</Managementport>
+    <Notreadyreason>fasp installation folder must be specified.</Notreadyreason>
+    <Unicode>False</Unicode>
+  </Service>
+  <Service alias="AS4" by="" class="*GhwWCQ0aLEssPlERHhodSwweUQ**" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 16:28:17" ready="False" uid="bWWzxbljSbSAAAJpsh8Rbg" version="1">
+    <Notreadyreason>Local host signing/encryption certificate settings are required.</Notreadyreason>
+    <Receiptstoragefolder>AS4/receipt/</Receiptstoragefolder>
+    <Resourcepath>/as4</Resourcepath>
+  </Service>
+  <Service alias="HSP" by="" class="*GhwWCQ0aLA8MN1EaHBYJDRoMUQ**" created="2020/11/03 13:41:42" enabled="True" modified="2011/01/18 16:28:17" ready="True" uid="Bo6g0g7CSfGmwLhiln7uEA" version="1">
+    <Resourcepath>/hsp</Resourcepath>
+  </Service>
+</Host>
