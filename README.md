@@ -14,7 +14,7 @@ To build locally copy four temporary licenses into `target/licenses` where the f
 
 ## Build
 
-`docker build -t cleo/harmony:poc-0.0.1 .`
+`docker build -t olsonjacob/harmony-container-poc:poc-0.0.1 .`
 
 ## Run
 
@@ -23,7 +23,7 @@ To build locally copy four temporary licenses into `target/licenses` where the f
 Use environment variable `INDEX` to switch licenses:
 
 ```bash
-$ docker run --rm -it -e INDEX=3 container-poc cat ./license_key.txt
+$ docker run --rm -it -e INDEX=3 olsonjacob/harmony-container-poc:poc-0.0.1 cat ./license_key.txt
 #Fri Oct 30 15:42:26 EDT 2020
 license.owner=Cleo
 license.extensionb6=[nw|-mhAZ-5yLQ-ZFJ]-Yk3&-\#k{9-asMw-m$4z
@@ -42,7 +42,7 @@ $
 Harmony will pick up the proper license index:
 
 ```
-$ docker run --rm -it -e INDEX=3 container-poc ./Harmonyc -s license
+$ docker run --rm -it -e INDEX=3 olsonjacob/harmony-container-poc:poc-0.0.1 ./Harmonyc -s license
 Listening for transport dt_socket at address: 8000
 License Key                 = 1vUA-uI&A-sZUQ-ZG8N-e[X}-&kXz-ns%c-CDLx
 License Owner               = Cleo
@@ -130,12 +130,22 @@ $
 
 The composition image can be tagged using:
 
-`docker tag container_harmony1 cleo/harmony:container-0.0.1`
+`docker tag container_harmony1 olsonjacob/harmony-container-poc:poc-0.0.1`
 
 Then pushed using:
 
-`docker push cleo/harmony:container-0.0.1`
+`docker push olsonjacob/harmony-container-poc:poc-0.0.1`
 
 The image may then be pulled using:
 
-`docker pull cleo/harmony:container-0.0.1`
+`docker pull olsonjacob/harmony-container-poc:poc-0.0.1`
+
+
+### Kubernetes Example
+
+A fully formed Kubernetes configuration can be run using:
+
+`kubectl create -f harmony-statefulset.yaml`
+
+Once the components are created and deployed you can access the Harmony UI through the virtual load balancer at `http://localhost:80/Harmony`
+
