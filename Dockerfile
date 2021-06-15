@@ -8,6 +8,7 @@ FROM ubuntu:$VERSION as base
 RUN  sed 's/main$/main universe/' -i /etc/apt/sources.list \
   && apt update && apt install -y \
 	curl iputils-ping net-tools python3-pip rsync unzip wget \
+  && apt-get install -y --no-install-recommends libfontconfig1 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/*
