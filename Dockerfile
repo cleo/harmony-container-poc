@@ -18,7 +18,7 @@ ENV CLEO_INSTALL_FOLDER=/opt/harmony
 # Make a non-root user and group
 RUN mkdir $CLEO_INSTALL_FOLDER \
   && groupadd -f cleo \
-  && useradd -G cleo harmony \
+  && useradd -m -G cleo harmony \
   && chown harmony:cleo $CLEO_INSTALL_FOLDER
 USER harmony
 WORKDIR /tmp
