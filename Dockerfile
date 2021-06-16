@@ -48,5 +48,6 @@ FROM base
 COPY --from=installer --chown=harmony /opt/harmony /opt/harmony
 WORKDIR /opt/harmony
 ENV INDEX=1
+RUN chmod +x /opt/harmony/docker-entrypoint.sh
 ENTRYPOINT ["/opt/harmony/docker-entrypoint.sh"]
 CMD ["bash"]
