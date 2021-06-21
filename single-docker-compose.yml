@@ -1,0 +1,63 @@
+---
+#
+# Harmony
+#
+version: '3'
+
+services:
+  harmony1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-Alpine
+    command: [ ./Harmonyc, -s, service]
+    environment:
+      INDEX: 1
+    hostname: harmony1
+    networks:
+      - harmony
+    ports:
+      - 5180:5080
+    volumes:
+      - /dev/urandom:/dev/random
+#  harmony2:
+#    build:
+#      context: .
+#    command: [ ./Harmonyc, -s, service]
+#    environment:
+#      INDEX: 2
+#    hostname: harmony2
+#    networks:
+#      - harmony
+#    ports:
+#      - 5280:5080
+#    volumes:
+#      - /dev/urandom:/dev/random
+#  harmony3:
+#    build:
+#      context: .
+#    command: [ ./Harmonyc, -s, service]
+#    environment:
+#      INDEX: 3
+#    hostname: harmony3
+#    networks:
+#      - harmony
+#    ports:
+#      - 5380:5080
+#    volumes:
+#      - /dev/urandom:/dev/random
+#  harmony4:
+#    build:
+#      context: .
+#    command: [ ./Harmonyc, -s, service]
+#    environment:
+#      INDEX: 4
+#    hostname: harmony4
+#    networks:
+#      - harmony
+#    ports:
+#      - 5480:5080
+#    volumes:
+#      - /dev/urandom:/dev/random
+
+networks:
+  harmony:
