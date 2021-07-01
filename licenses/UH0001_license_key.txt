@@ -1,6 +1,0 @@
-#Tue Jun 08 09:06:05 CDT 2021
-license.extensionb2=znwA-mhAP-5gUN-eUJK-Yku&-\#P{i-aAMw-mk4d
-license.extension1=hbwA-N{&F-dgUN-eiJF-M{X}-fP\!X-7A{c-mZ0E
-license.key=1vB|-mI&1-LFmN-egjF-ctX}-&P\!X-aEsc-JM0E
-license.owner=Cleo
-license.hash=16M210J|j5t5qj
