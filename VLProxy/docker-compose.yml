@@ -1,0 +1,40 @@
+---
+#
+# VLProxy 
+#
+version: '3'
+
+services:
+  vlproxy1:
+    build:
+      context: .
+    command: [-s,service]
+    environment:
+      INDEX: 1
+    hostname: vlproxy1
+    networks:
+      - harmony
+    ports:
+      - "6080:6080"
+      - "8080:8080"
+      - "10022:10022"
+    volumes:
+      - /dev/urandom:/dev/random
+#  vlproxy2:
+#    build:
+#      context: .
+#    command: [-s,service]
+#    environment:
+#      INDEX: 1
+#    hostname: vlproxy2
+#    networks:
+#      - harmony
+#    ports:
+#      - "6180:6080"
+#      - "8180:8080"
+#      - "11022:10022"
+#    volumes:
+#      - /dev/urandom:/dev/random
+
+networks:
+  harmony:
