@@ -58,8 +58,7 @@ There is a service dependency between `harmony1` and `volumeprep1`, and `harmony
 This `harmony-alpine` image, which weighs in at 883.55 MB on my laptop,
 functions like a Kubernetes init container. This image is used very simply to map
 `/opt/harmony` to the `harmony1` volume, and on first use the volume is initialized
-from the `/opt/harmony` in the image. The `prepvolume.sh` script copies in the designated
-license file and fixes up permissions on the volume.
+from the `/opt/harmony` in the image.
 
 The Harmony service actually runs from the `Dockerfile` image, which contains only
 the jre needed to run Harmony, and weighs in at only 108.47 MB on my laptop.
