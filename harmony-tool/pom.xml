@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cleo.labs</groupId>
+    <artifactId>docker-harmony-tool</artifactId>
+    <version>5.7.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>docker-harmony-tool</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <junit.version>4.13.1</junit.version>
+        <cleo.version>5.7.0.0</cleo.version>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Cleo Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/cleo/docker-harmony-tool</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <!-- Official Cleo's repository -->
+            <id>cleo_repo</id>
+            <name>Cleo's Repository</name>
+            <!--  <url>http://10.80.80.157:8081/nexus/content/groups/public/</url> -->
+            <url>http://contd.cleo.com/nexus/content/groups/public/</url>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cleo.product</groupId>
+            <artifactId>LexiCom</artifactId>
+            <version>${cleo.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>/opt/harmony/lib/</classpathPrefix>
+                            <mainClass>com.cleo.labs.docker.harmony.Tool</mainClass>
+                            <classpathLayoutType>custom</classpathLayoutType>
+                            <customClasspathLayout>${artifact.artifactId}.${artifact.extension}</customClasspathLayout>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

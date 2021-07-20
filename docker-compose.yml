@@ -1,62 +1,94 @@
----
-#
-# Harmony
-#
-version: '3'
+version: "3.9"
 
 services:
+  volumeprep1:
+    image: ghcr.io/cleo/harmony-alpine:5.7.0.1
+    environment:
+      INDEX: 1
+      ADMIN_PASSWORD: cleo
+      PROXIES: vlproxy1,vlproxy2
+    command: ["./prepvolume.sh"]
+    volumes:
+      - ./licenses:/licenses
+      - ./syncs:/syncs
+      - harmony1:/opt/harmony
+    networks:
+      - harmony
   harmony1:
     build:
       context: .
-    command: [ ./Harmonyc, -s, service]
     environment:
       INDEX: 1
+    command: ["start", "daemon"]
     hostname: harmony1
     networks:
       - harmony
     ports:
       - 5180:5080
+      - 6180:6080
     volumes:
       - /dev/urandom:/dev/random
+      - harmony1:/opt/harmony
+      - ./:/opt/build
+    depends_on:
+      volumeprep1:
+        condition: service_completed_successfully
+  volumeprep2:
+    image: ghcr.io/cleo/harmony-alpine:5.7.0.1
+    environment:
+      INDEX: 2
+      ADMIN_PASSWORD: cleo
+      PROXIES: vlproxy1,vlproxy2
+    command: ["./prepvolume.sh"]
+    volumes:
+      - ./licenses:/licenses
+      - ./syncs:/syncs
+      - harmony2:/opt/harmony
+    networks:
+      - harmony
   harmony2:
     build:
       context: .
-    command: [ ./Harmonyc, -s, service]
     environment:
       INDEX: 2
+    command: ["start", "daemon"]
     hostname: harmony2
     networks:
       - harmony
     ports:
       - 5280:5080
+      - 6280:6080
     volumes:
       - /dev/urandom:/dev/random
-  harmony3:
-    build:
-      context: .
-    command: [ ./Harmonyc, -s, service]
+      - harmony2:/opt/harmony
+      - ./:/opt/build
+    depends_on:
+      volumeprep1:
+        condition: service_completed_successfully
+  vlproxy1:
+    image: ghcr.io/cleo/vlproxy-alpine:5.7.0.1
     environment:
-      INDEX: 3
-    hostname: harmony3
+      INDEX: 1
+      VLPCONFIG: serialNumbers=UH0001,UH0002
+    ports:
+      - 6181:9080
+      - 6141:9443
+      - 6121:9022
     networks:
       - harmony
-    ports:
-      - 5380:5080
-    volumes:
-      - /dev/urandom:/dev/random
-  harmony4:
-    build:
-      context: .
-    command: [ ./Harmonyc, -s, service]
+  vlproxy2:
+    image: ghcr.io/cleo/vlproxy-alpine:5.7.0.1
     environment:
-      INDEX: 4
-    hostname: harmony4
+      INDEX: 2
+      VLPCONFIG: serialNumbers=UH0001,UH0002
+    ports:
+      - 6281:9080
+      - 6241:9443
+      - 6221:9022
     networks:
       - harmony
-    ports:
-      - 5480:5080
-    volumes:
-      - /dev/urandom:/dev/random
-
+volumes:
+  harmony1:
+  harmony2:
 networks:
   harmony:

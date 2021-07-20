@@ -1,151 +1,66 @@
-# container-poc
+# Clustered Docker Compose Example with Volumes
 
-This is the Docker [context](https://docs.docker.com/engine/reference/builder/) for the the container-poc.
+This `docker-compose.yml` example shows how to create a Harmony server cluster using a Docker volume
+to persist configuration and other Harmony data across invocations of each container. The example also
+includes a clustered VLProxy setup that is automatically configured within the Harmony nodes.
 
-## Prerequisites
-
-### Installer 
-
-To build locally copy a Harmony installer (e.g. http://www.cleo.com/SoftwareUpdate/harmony/release/jre1.8/InstData/Linux(64-bit)/VM/install.bin) to `target/install.bin`.
-
-### Licenses 
-
-To build locally copy four temporary licenses into `target/licenses` where the filenames are assumed to be `UH000[1-4]_license_key.txt`.
-
-## Build
-
-`docker build -t olsonjacob/harmony-container-poc:poc-0.0.1 .`
-
-## Run
-
-### License Index Check
-
-Use environment variable `INDEX` to switch licenses:
-
-```bash
-$ docker run --rm -it -e INDEX=3 olsonjacob/harmony-container-poc:poc-0.0.1 cat ./license_key.txt
-#Fri Oct 30 15:42:26 EDT 2020
-license.owner=Cleo
-license.extensionb6=[nw|-mhAZ-5yLQ-ZFJ]-Yk3&-\#k{9-asMw-m$4z
-license.extensionb5=0bw|-5{2k-ryLQ-ZVJR-s^9&-HkXC-as\#u-mRZU
-license.extensionb4=0vw|-5I2k-ryLQ-ZVJR-s^9C-HkXC-as\#u-mRZU
-license.extensionb3=0iw|-5$%k-ryLQ-ZVJR-s^9Z-HkXC-as\#u-mRZU
-license.extensionb2=0nwA-5h2k-rZUQ-ZVJR-s^9Z-HkXC-as\#u-mRZU
-license.hash=1K3CLLL|u7ieoy
-license.extensionb1=0bwA-5{rk-zZUQ-ZVJR-s^9Z-HkXC-as\#u-mRZU
-license.key=1vUA-uI&A-sZUQ-ZG8N-e[X}-&kXz-ns%c-CDLx
-$
-```
-
-### Harmony License Check
-
-Harmony will pick up the proper license index:
+To bring up the servers:
 
 ```
-$ docker run --rm -it -e INDEX=3 olsonjacob/harmony-container-poc:poc-0.0.1 ./Harmonyc -s license
-Listening for transport dt_socket at address: 8000
-License Key                 = 1vUA-uI&A-sZUQ-ZG8N-e[X}-&kXz-ns%c-CDLx
-License Owner               = Cleo
-Serial Number               = UH0003-CN0138
-Host ID                     = DP6214
-Key Expiration              = 2020/12/29
-# of Hosts                  = Unlimited
-# of Mailboxes              = Unlimited
-Protocol Limits:
-  HSP                       = Unlimited
-  S3                        = Unlimited
-  SMB                       = Unlimited
-  User                      = Unlimited
-  Any other                 = Unlimited
-Platform                    = Any
-Translator Integration      = Yes
-VLProxy                     = Yes
-Web Browser Interface       = Yes
-File Tracker                = All
-Large File Applet           = No
-High Availability Backup    = No
-Java API                    = Yes
-System Monitor              = Yes
-SNMP Agent                  = Yes
-IP Filter                   = Yes
-JavaScript Actions          = Yes
-SAML                        = Yes
-Trigger Pool Size           = 100
-Unify in Portal             = Yes
-FIPS Mode                   = Yes
-Support Expiration          = 2020/12/29
-$
+docker compose up
+^C to terminate the servers
 ```
 
-## Composition
+Navigate to [http://localhost:5180](http://localhost:5180) and login with the with username `administrator` password set within `ADMIN_PASSWORD:` in the `docker-compose.yml` file. Default is `cleo`.
 
-This is an example composition with four synchronized Harmony containers.
+## Resources
 
-### Build
+The docker-compose creates:
 
-Build the example composition from this context using `docker-compose build`.
+* a `harmony1` service,
+  * based on the image described by the `Dockerfile`,
+  * which mounts the `harmony1` volume at `/opt/harmony`,
+  * with `http` enabled on port `5080`, mapped to `localhost:5180` on the host,
+  * with `https` enabled on port `6080`, mapped to `localhost:6180` on the host,
+  * with `sftp` enabled on port `10022`.
+* a `harmony2` service,
+  * based on the image described by the `Dockerfile`,
+  * which mounts the `harmony2` volume at `/opt/harmony`,
+  * with `http` enabled on port `5080`, mapped to `localhost:5280` on the host,
+  * with `https` enabled on port `6080`, mapped to `localhost:6280` on the host,
+  * with `sftp` enabled on port `10022`,
+* a `vlproxy1` server,
+  * based on the image in the Cleo GitHub Container Registry at `ghcr.io/cleo/vlproxy-alpine:5.7.0.1`,
+  * with an `http` proxy listeneing on port `9080`, mapped to `localhost:6181` on the host,
+  * with an `https` proxy listing on port `9443`, mapped to `localhost:6141` on the host,
+  * with an `sftp` proxy listing on port `9022`	, mapped to `localhost:6121` on the host.
+* a `vlproxy2` server,
+  * based on the image in the Cleo GitHub Container Registry at `ghcr.io/cleo/vlproxy-alpine:5.7.0.1`,
+  * with an `http` proxy listeneing on port `9080`, mapped to `localhost:6281` on the host,
+  * with an `https` proxy listing on port `9443`, mapped to `localhost:6241` on the host,
+  * with an `sftp` proxy listing on port `9022`, mapped to `localhost:6221` on the host.
+* a `volumeprep1` service, which is used to prepare the `harmony1` volume,
+  * based on the image in the Cleo GitHub Container Registry at `ghcr.io/cleo/harmony-alpine:5.7.0.1`,
+* a `volumeprep2` service, which is used to prepare the `harmony2` volume,
+  * based on the image in the Cleo GitHub Container Registry at `ghcr.io/cleo/harmony-alpine:5.7.0.1`,
+* a `harmony` network.
 
-### Run
 
-Run the example compostion from this context using `docker-compose up`. At this point you should be able to access the
-Harmony UI via `http://localhost:5[1-4]80/Harmony` substituting the desired index `[1-4]` for the Harmony you wish to access.
-The default credentials are:
-`Username: administrator`
-`Password: cleo`
+There is a service dependency between `harmony1` and `volumeprep1`, and `harmony2` and `volumeprep2`:
 
-### Verify
-
-After cloning and activating a host (i.e. with `harmony1` clone and activate `CLEO SSH FTP System Test.xml`)
-you should see the host is sync'ed to the other Harmony containers:
-
-```bash
-$ docker exec -it container_harmony2_1 ls -l hosts
-total 36
--rw-r--r-- 1 harmony harmony  4111 Nov  2 18:40 'CLEO SSH FTP System Test.xml'
--rw-r--r-- 1 harmony harmony 14934 Nov  2 18:37 'Local Listener.xml'
-drwxrwxr-x 1 harmony harmony  4096 Nov  2 18:37  preconfigured
-drwxrwxr-x 1 harmony harmony  4096 Nov  2 18:38  support
-drwxr-xr-x 2 harmony harmony  4096 Nov  2 18:40  unsynced
-
-$ docker exec -it container_harmony3_1 ls -l hosts
-
-total 36
--rw-r--r-- 1 harmony harmony  4111 Nov  2 18:40 'CLEO SSH FTP System Test.xml'
--rw-r--r-- 1 harmony harmony 14934 Nov  2 18:37 'Local Listener.xml'
-drwxrwxr-x 1 harmony harmony  4096 Nov  2 18:37  preconfigured
-drwxrwxr-x 1 harmony harmony  4096 Nov  2 18:38  support
-drwxr-xr-x 2 harmony harmony  4096 Nov  2 18:40  unsynced
-
-$ docker exec -it container_harmony4_1 ls -l hosts
-total 36
--rw-r--r-- 1 harmony harmony  4111 Nov  2 18:40 'CLEO SSH FTP System Test.xml'
--rw-r--r-- 1 harmony harmony 14934 Nov  2 18:37 'Local Listener.xml'
-drwxrwxr-x 1 harmony harmony  4096 Nov  2 18:37  preconfigured
-drwxrwxr-x 1 harmony harmony  4096 Nov  2 18:38  support
-drwxr-xr-x 2 harmony harmony  4096 Nov  2 18:40  unsynced
-$
+```
+  harmony1:
+    depends_on:
+      volumeprep1:
+        condition: service_completed_successfully
 ```
 
-### Docker Hub Example
+This `harmony-alpine` image, which weighs in at 883.55 MB on my laptop,
+functions like a Kubernetes init container. This image is used very simply to map
+`/opt/harmony` to the `harmony1` volume, and on first use the volume is initialized
+from the `/opt/harmony` in the image. The `prepvolume.sh` script copies in the designated
+license file and fixes up permissions on the volume.
 
-The composition image can be tagged using:
-
-`docker tag container_harmony1 olsonjacob/harmony-container-poc:poc-0.0.1`
-
-Then pushed using:
-
-`docker push olsonjacob/harmony-container-poc:poc-0.0.1`
-
-The image may then be pulled using:
-
-`docker pull olsonjacob/harmony-container-poc:poc-0.0.1`
-
-
-### Kubernetes Example
-
-A fully formed Kubernetes configuration can be run using:
-
-`kubectl create -f harmony-statefulset.yaml`
-
-Once the components are created and deployed you can access the Harmony UI through the virtual load balancer at `http://localhost:80/Harmony`
-
+The Harmony service actually runs from the `Dockerfile` image, which contains only
+the jre needed to run Harmony, and weighs in at only 108.47 MB on my laptop.
+It mounts the `harmony1` volume to `/opt/harmony`, which persists between runs.
