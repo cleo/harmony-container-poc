@@ -7,7 +7,7 @@ FROM ubuntu:$VERSION as base
 # Install curl, ping, rsync, unzip, wget & libraries
 RUN  sed 's/main$/main universe/' -i /etc/apt/sources.list \
   && apt update && apt install -y \
-	curl iputils-ping net-tools python3-pip rsync unzip wget \
+	curl iputils-ping net-tools python3-pip rsync unzip wget vim \
   && apt-get install -y --no-install-recommends libfontconfig1 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \

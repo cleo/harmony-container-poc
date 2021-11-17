@@ -36,6 +36,7 @@ spec:
   - name: http
     port: 80
     targetPort: 5080
+  sessionAffinity: ClientIP
   selector:
     app: harmony
 ---
@@ -58,7 +59,7 @@ metadata:
   name: harmony
 spec:
   serviceName: harmony
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: harmony
