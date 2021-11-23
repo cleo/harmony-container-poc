@@ -1,42 +1,50 @@
 #
-# alpine:vlproxy
+# vlproxy-alpine
 #
-FROM alpine:latest as base
-
-# Install openjdk, rsync, unzip, wget, fontconfig, curl, and bash 
-RUN apk --update add openjdk8 rsync unzip wget curl bash expect
+# FROM adoptopenjdk/openjdk8:jre8u292-b10-alpine
+FROM alpine:latest
 
 # Define environment variables for product, version, etc.
-ENV CLEO_INSTALL_FOLDER=/opt/vlproxy
-RUN mkdir $CLEO_INSTALL_FOLDER
-ARG HARMONY_SERIALS=UH0001-AL8914
-
-# Make a non-root user and group
-RUN addgroup cleo \
-  && adduser -h /home/cleo -G cleo vlproxy -D \
-  && chown vlproxy:cleo $CLEO_INSTALL_FOLDER
-USER vlproxy
-WORKDIR /opt/vlproxy
-
-FROM base as installer
+ENV CLEO_HOME=/opt/vlproxy
+ENV VLPCONFIG=
 
 # Establish defaults for the options to add as well as the files to modify
-ARG LAX_OPTIONS='-Djava.security.egd=file:/dev/./urandom'
-ARG LAX_FILES="${CLEO_INSTALL_FOLDER}/*.lax"
+# ARG LAX_OPTIONS='-Djava.security.egd=file:/dev/./urandom'
+# ARG LAX_FILES="${CLEO_HOME}/*.lax"
+ARG VLPROXY_VERSION=5.7.0.1
 
-COPY --chown=vlproxy target/install.bin $CLEO_INSTALL_FOLDER/install.bin
-RUN chmod +x install.bin
-RUN ./install.bin LAX_VM /usr/lib/jvm/java-1.8-openjdk/jre/bin/java -i silent -DUSER_INSTALL_DIR="$CLEO_INSTALL_FOLDER"
-RUN sed -i -- "s|lax.nl.java.option.additional=|lax.nl.java.option.additional=${LAX_OPTIONS} |g" ${LAX_FILES} 
-RUN rm ./install.bin
+COPY --chown=vlproxy target/install.bin $CLEO_HOME/install.bin
+RUN apk add openjdk8-jre fontconfig curl xmlstarlet \
+  && addgroup cleo \
+  && adduser -h $CLEO_HOME -G cleo vlproxy -D \
+  && chmod a+x $CLEO_HOME/install.bin \
+  && $CLEO_HOME/install.bin -i silent -DUSER_INSTALL_DIR="$CLEO_HOME" \
+  && rm $CLEO_HOME/install.bin \
+  && curl -o $CLEO_HOME/docker-harmony-tool.jar 'https://raw.githubusercontent.com/cleo/harmony-container-poc/repository/com/cleo/labs/docker-harmony-tool/5.7.0.0/docker-harmony-tool-5.7.0.0.jar' \
+  && echo '#!/bin/sh'$'\njava -cp $CLEO_HOME/docker-harmony-tool.jar:$(find $CLEO_HOME/lib -type d|sed "s|$|/*|"|paste -s -d : -):$CLEO_HOME/webserver/AjaxSwing/lib/ajaxswing.jar com.cleo.labs.docker.harmony.Tool "$@"' > $CLEO_HOME/docker-harmony-tool \
+  && chmod a+x $CLEO_HOME/docker-harmony-tool \
+  && chown -R vlproxy:cleo $CLEO_HOME \
+  && rm -rf /tmp/*.apk /tmp/gcc /tmp/gcc-libs.tar* /tmp/libz /tmp/libz.tar.xz /var/cache/apk/*
 
-COPY configure.sh $CLEO_INSTALL_FOLDER
+COPY --chown=vlproxy:cleo vlproxyentrypoint $CLEO_HOME
+RUN chmod a+x $CLEO_HOME/vlproxyentrypoint
 
-FROM base
-COPY --from=installer --chown=vlproxy /opt/vlproxy /opt/vlproxy
-WORKDIR /opt/vlproxy
-ENV INDEX=1
-RUN chmod +x configure.sh
-RUN ./configure.sh $CLEO_INSTALL_FOLDER $HARMONY_SERIALS 
-ENTRYPOINT ["/opt/vlproxy/VLProxyc"]
-CMD ["bash"]
+USER vlproxy
+WORKDIR $CLEO_HOME
+
+# RUN /opt/harmony/Harmonyd start \
+#   && sleep 10 \
+#   && /opt/harmony/Harmonyc -s service,stop \
+#   && xml ed --inplace -a 'Users/Usergroup[@alias="Administrators"]/User[last()]' -t elem -n Vlpoolaccess -v mySystem conf/Users.xml \
+#   && /opt/harmony/Harmonyc \
+#        -p "Local Listener/AS2"                   -t "<Service><enabled>True" \
+#        -p "Local Listener/AS2"                   -t "<Service><Hostname>localhost" \
+#        -p "Local Listener/AS3"                   -t "<Service><enabled>False" \
+#        -p "Local Listener/ebXML Message Service" -t "<Service><enabled>False" \
+#        -p "Local Listener/fasp"                  -t "<Service><enabled>False" \
+#        -p "Local Listener/Odette FTP"            -t "<Service><enabled>False" \
+#        -p "Local Listener/RosettaNet"            -t "<Service><enabled>False" \
+#        -p "Local Listener/SMTP"                  -t "<Service><enabled>False"
+
+CMD ["sh"]
+ENTRYPOINT ["/opt/vlproxy/vlproxyentrypoint"]

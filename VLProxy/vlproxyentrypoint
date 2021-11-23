@@ -1,0 +1,12 @@
+#!/bin/sh
+$CLEO_HOME/docker-harmony-tool vlpconfig \
+  serialNumbers=UH0001,UH0002,UH0003,UH0004 \
+  externalAddress=`hostname` \
+  internalAddress=`hostname -i` \
+  internalNetworkIDs=`hostname -i | sed 's/\.\d*$//'` \
+  proxyHTTPPorts=8080 \
+  reverseProxyHTTPPorts=9080 \
+  reverseProxyHTTPsPorts=9443 \
+  reverseProxySSHFTPPorts=9022 \
+  $VLPCONFIG > $CLEO_HOME/conf/VLProxy.properties
+$CLEO_HOME/VLProxyc -s service
