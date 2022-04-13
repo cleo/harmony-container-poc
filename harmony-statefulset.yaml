@@ -59,7 +59,7 @@ metadata:
   name: harmony
 spec:
   serviceName: harmony
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: harmony
