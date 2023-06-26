@@ -70,7 +70,8 @@ spec:
     spec:
       initContainers:
       - name: init-harmony
-        image: olsonjacob/harmony-container-poc:poc-0.0.1
+        image: olsonjacob/harmony-container-poc:poc-0.0.2
+        imagePullPolicy: IfNotPresent
         command:
         - bash
         - "-c"
@@ -82,12 +83,14 @@ spec:
           # Adding 1+ ordinal to match license structure
           cp "licenses/UH000$((1+$ordinal))_license_key.txt" /opt/init-harmony/license_key.txt
           cp "syncs/Sync$((1+$ordinal)).xml" /opt/init-harmony/conf/Sync.xml
+        command: [/opt/init-harmony/Harmonyc, -i, /opt/harmony/0.6.zip]
         volumeMounts:
         - name: harmony
           mountPath: /opt/init-harmony
       containers:
       - name: harmony
-        image: olsonjacob/harmony-container-poc:poc-0.0.1
+        image: olsonjacob/harmony-container-poc:poc-0.0.2
+        imagePullPolicy: IfNotPresent
         command: [ ./Harmonyc, -s, service]
         ports:
         - containerPort: 5080

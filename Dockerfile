@@ -2,7 +2,7 @@
 # ubuntu:bionic:harmony
 #
 ARG VERSION=bionic
-FROM ubuntu:$VERSION as base
+FROM --platform=linux/amd64 ubuntu:$VERSION as base
 
 # Install curl, ping, rsync, unzip, wget & libraries
 RUN  sed 's/main$/main universe/' -i /etc/apt/sources.list \
@@ -43,6 +43,8 @@ COPY licenses $CLEO_INSTALL_FOLDER/licenses
 COPY syncs $CLEO_INSTALL_FOLDER/syncs
 COPY conf $CLEO_INSTALL_FOLDER/conf
 COPY docker-entrypoint.sh $CLEO_INSTALL_FOLDER
+
+COPY --chown=harmony target/0.6.zip /opt/harmony/0.6.zip
 
 FROM base
 COPY --from=installer --chown=harmony /opt/harmony /opt/harmony
